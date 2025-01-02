@@ -5,26 +5,26 @@ public class DependencyMethodTest {
 
     @Test(priority = 1)
     void openApp(){
-        //Assert.fail();
+        Assert.assertTrue(true);
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2,dependsOnMethods = {"openApp"})
     void login(){
         Assert.assertTrue(true);
 
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3,dependsOnMethods = {"login"})
     void search(){
-        Assert.assertTrue(true);
+        Assert.assertTrue(false);
     }
 
-    @Test(priority = 4)
+    @Test(priority = 4,dependsOnMethods = {"login","search"})
     void advancedSearch(){
         Assert.assertTrue(true);
     }
 
-    @Test(priority = 5)
+    @Test(priority = 5,dependsOnMethods = {"login"})
     void logout(){
         Assert.assertTrue(true);
     }
